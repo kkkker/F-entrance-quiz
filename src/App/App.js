@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 
+import Student from './student/student';
+
 class App extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
@@ -36,11 +38,7 @@ class App extends Component {
           <h2>学员列表</h2>
           <div className="students">
             {this.state.students.map((student) => {
-              return (
-                <div key={student.id} className="student">
-                  <p>{`${student.id}. ${student.name}`}</p>
-                </div>
-              );
+              return <Student key={student.id} student={student} />;
             })}
             <div className="student">
               <p>+ 添加学员</p>

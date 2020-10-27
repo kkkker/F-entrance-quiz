@@ -1,0 +1,8 @@
+.student {
+  width: 6%;
+  min-width: 100px;
+  margin: 20px 40px;
+  background-color: #eeeeee;
+  text-align: center;
+  font-weight: bold;
+}

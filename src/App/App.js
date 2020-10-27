@@ -14,10 +14,10 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    this.getStudents();
+    this.showStudents();
   };
 
-  getStudents = () => {
+  showStudents = () => {
     const url = 'http://localhost:8080/students';
     fetch(url, {
       headers: {
@@ -65,6 +65,24 @@ class App extends Component {
     });
   };
 
+  handelKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      this.httpAddStudent();
+    }
+  };
+
+  httpAddStudent = () => {
+    const url = `http://localhost:8080/student?name=${this.state.studentName}`;
+    fetch(url, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'POST',
+    }).then(() => {
+      this.showStudents();
+    });
+  };
+
   render() {
     return (
       <div data-testid="app" className="App">
@@ -91,9 +109,11 @@ class App extends Component {
                 </button>
               ) : (
                 <input
+                  id="input-name"
                   type="text"
                   className="add-student-input"
                   value={this.state.studentName}
+                  onKeyUp={this.handelKeyUp}
                   onChange={(e) => this.handleChange('studentName', e)}
                 />
               )}

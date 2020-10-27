@@ -1,2 +1,28 @@
 .App {
+  width: 80%;
+  background-color: #f7f7f7;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.list-item {
+  width: 100%;
+}
+
+.students {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.student {
+  width: 6%;
+  min-width: 100px;
+  margin: 20px 40px;
+  background-color: #eeeeee;
+  text-align: center;
+  font-weight: bold;
 }

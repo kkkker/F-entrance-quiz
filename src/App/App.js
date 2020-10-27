@@ -32,13 +32,13 @@ class App extends Component {
   render() {
     return (
       <div data-testid="app" className="App">
-        <div>
+        <div className="list-item">
           <h2>学员列表</h2>
           <div className="students">
             {this.state.students.map((student) => {
               return (
                 <div key={student.id} className="student">
-                  <p>{student.name}</p>
+                  <p>{`${student.id}. ${student.name}`}</p>
                 </div>
               );
             })}

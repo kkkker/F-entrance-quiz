@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Group from './group/group';
 
 import Student from './student/student';
 
@@ -61,9 +62,7 @@ class App extends Component {
             </button>
           </div>
           {this.state.groups &&
-            this.state.groups.map((group) => {
-              return <div>{group.id}</div>;
-            })}
+            this.state.groups.map((group) => <Group key={group.id} group={group} />)}
         </div>
         <div className="list-item">
           <h2>学员列表</h2>

@@ -10,7 +10,7 @@ class Group extends Component {
         <p className="group-name">{group.id} 组</p>
         <div className="group-student">
           {group.students.map((student) => (
-            <Student student={student} />
+            <Student key={student.id} student={student} />
           ))}
         </div>
       </div>

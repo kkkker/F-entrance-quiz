@@ -68,6 +68,9 @@ class App extends Component {
   handelKeyUp = (e) => {
     if (e.keyCode === 13) {
       this.httpAddStudent();
+      this.setState({
+        isAddStudent: false,
+      });
     }
   };
 

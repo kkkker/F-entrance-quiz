@@ -7,6 +7,7 @@ class App extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     students: [],
+    groups: [],
   };
 
   componentDidMount = () => {
@@ -31,14 +32,38 @@ class App extends Component {
       );
   };
 
+  handleGroupStudent = () => {
+    const url = 'http://localhost:8080/groups';
+    fetch(url, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'GET',
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          groups: data,
+        });
+      });
+  };
+
   render() {
     return (
       <div data-testid="app" className="App">
         <div className="list-item">
           <div className="group-title">
             <h2>分组列表</h2>
-            <button type="button">分组学员</button>
+            <button onClick={this.handleGroupStudent} type="button">
+              分组学员
+            </button>
           </div>
+          {this.state.groups &&
+            this.state.groups.map((group) => {
+              return <div>{group.id}</div>;
+            })}
         </div>
         <div className="list-item">
           <h2>学员列表</h2>

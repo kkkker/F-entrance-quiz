@@ -7,8 +7,8 @@ class Group extends Component {
     const { group } = this.props;
     return (
       <div className="group">
-        <p>{group.id} 组</p>
-        <div>
+        <p className="group-name">{group.id} 组</p>
+        <div className="group-student">
           {group.students.map((student) => (
             <Student student={student} />
           ))}

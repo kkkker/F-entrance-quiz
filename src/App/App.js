@@ -9,6 +9,8 @@ class App extends Component {
   state = {
     students: [],
     groups: [],
+    isAddStudent: false,
+    studentName: '',
   };
 
   componentDidMount = () => {
@@ -51,7 +53,17 @@ class App extends Component {
       });
   };
 
-  handleAddStudent = () => {};
+  handleAddStudent = () => {
+    this.setState({
+      isAddStudent: true,
+    });
+  };
+
+  handleChange = (tag, event) => {
+    this.setState({
+      [tag]: event.target.value,
+    });
+  };
 
   render() {
     return (
@@ -73,9 +85,18 @@ class App extends Component {
               return <Student key={student.id} student={student} />;
             })}
             <div className="student">
-              <button className="add-student" onClick={this.handleAddStudent} type="button">
-                + 添加学员
-              </button>
+              {!this.state.isAddStudent ? (
+                <button className="add-student" onClick={this.handleAddStudent} type="button">
+                  + 添加学员
+                </button>
+              ) : (
+                <input
+                  type="text"
+                  className="add-student-input"
+                  value={this.state.studentName}
+                  onChange={(e) => this.handleChange('studentName', e)}
+                />
+              )}
             </div>
           </div>
         </div>

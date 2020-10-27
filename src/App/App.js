@@ -51,6 +51,8 @@ class App extends Component {
       });
   };
 
+  handleAddStudent = () => {};
+
   render() {
     return (
       <div data-testid="app" className="App">
@@ -71,7 +73,9 @@ class App extends Component {
               return <Student key={student.id} student={student} />;
             })}
             <div className="student">
-              <p>+ 添加学员</p>
+              <button className="add-student" onClick={this.handleAddStudent} type="button">
+                + 添加学员
+              </button>
             </div>
           </div>
         </div>

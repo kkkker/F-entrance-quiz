@@ -16,11 +16,11 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.showStudents();
+    this.getAllStudents();
   };
 
   // TODO GTB-工程实践: - 命名不是很合适，获取学员列表
-  showStudents = () => {
+  getAllStudents = () => {
     // TODO GTB-工程实践: - 建议将URL提取常量
     // TODO GTB-工程实践: - 建议将获取数据api抽取到单独的service
     const url = 'http://localhost:8080/students';
@@ -41,7 +41,7 @@ class App extends Component {
   };
 
   // TODO GTB-工程实践: - 命名不是很合适，获取分组列表
-  handleGroupStudent = () => {
+  getGroupOfStudent = () => {
     const url = 'http://localhost:8080/groups';
     fetch(url, {
       headers: {
@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   // TODO GTB-工程实践: - 命名不是很合适
-  handleAddStudent = () => {
+  addStudent = () => {
     this.setState({
       isAddStudent: true,
     });
@@ -84,7 +84,7 @@ class App extends Component {
       },
       method: 'POST',
     }).then(() => {
-      this.showStudents();
+      this.getAllStudents();
     });
   };
 
@@ -95,7 +95,7 @@ class App extends Component {
           {/* TODO GTB-知识点： - 这里建议使用<header>标签 (修改为<header>标签) */}
           <header className="group-title">
             <h2>分组列表</h2>
-            <button onClick={this.handleGroupStudent} type="button">
+            <button onClick={this.getGroupOfStudent} type="button">
               分组学员
             </button>
           </header>
@@ -111,7 +111,7 @@ class App extends Component {
             {/* TODO GTB-知识点：- css 命名不太合理，添加学员这块建议可以提取一个单独的组件 */}
             <div className="student">
               {!this.state.isAddStudent ? (
-                <button className="add-student" onClick={this.handleAddStudent} type="button">
+                <button className="add-student" onClick={this.addStudent} type="button">
                   + 添加学员
                 </button>
               ) : (

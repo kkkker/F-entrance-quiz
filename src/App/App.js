@@ -11,9 +11,7 @@ class App extends Component {
     students: [],
     groups: [],
     isAddStudent: false,
-    studentName: '',
   };
-
 
   componentDidMount = () => {
     this.showStudents();
@@ -66,23 +64,18 @@ class App extends Component {
     });
   };
 
-  handleChange = (tag, event) => {
-    this.setState({
-      [tag]: event.target.value,
-    });
-  };
-
-  handelKeyUp = (e) => {
-    if (e.keyCode === 13) {
-      this.httpAddStudent();
+  handelKeyUp = (event) => {
+    if (event.keyCode === 13) {
+      this.httpAddStudent(event.target.value);
       this.setState({
         isAddStudent: false,
       });
     }
   };
-  // TODO GTB-知识点: * 这里可以省略studentName，也可以省略掉onChang，直接keyup的时候用event.target.value就好了
-  httpAddStudent = () => {
-    const url = `http://localhost:8080/student?name=${this.state.studentName}`;
+
+  // TODO GTB-知识点: * 这里可以省略studentName，也可以省略掉onChang，直接keyup的时候用event.target.value就好了(已经修改此处内容)
+  httpAddStudent = (studentName) => {
+    const url = `http://localhost:8080/student?name=${studentName}`;
     fetch(url, {
       headers: {
         'content-type': 'application/json',
@@ -126,7 +119,6 @@ class App extends Component {
                   className="add-student-input"
                   value={this.state.studentName}
                   onKeyUp={this.handelKeyUp}
-                  onChange={(e) => this.handleChange('studentName', e)}
                 />
               )}
             </div>

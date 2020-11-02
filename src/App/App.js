@@ -3,6 +3,7 @@ import './App.scss';
 import Group from './group/group';
 
 import Student from './student/student';
+import { GET_STUDENTS_URL, POST_STUDENT_URL, GET_GROUPS_URL } from './service/service';
 
 class App extends Component {
   // TODO GTB-工程实践: - 建议安装插件解决eslint而不是注释(已修改该问题)
@@ -19,12 +20,11 @@ class App extends Component {
     this.getAllStudents();
   };
 
-  // TODO GTB-工程实践: - 命名不是很合适，获取学员列表
+  // TODO GTB-工程实践: - 命名不是很合适，获取学员列表(已修改该问题)
   getAllStudents = () => {
-    // TODO GTB-工程实践: - 建议将URL提取常量
-    // TODO GTB-工程实践: - 建议将获取数据api抽取到单独的service
-    const url = 'http://localhost:8080/students';
-    fetch(url, {
+    // TODO GTB-工程实践: - 建议将URL提取常量(已修改该问题)
+    // TODO GTB-工程实践: - 建议将获取数据api抽取到单独的service(已修改该问题)
+    fetch(GET_STUDENTS_URL, {
       headers: {
         'content-type': 'application/json',
       },
@@ -40,10 +40,9 @@ class App extends Component {
       );
   };
 
-  // TODO GTB-工程实践: - 命名不是很合适，获取分组列表
+  // TODO GTB-工程实践: - 命名不是很合适，获取分组列表(已修改该问题)
   getGroupOfStudent = () => {
-    const url = 'http://localhost:8080/groups';
-    fetch(url, {
+    fetch(GET_GROUPS_URL, {
       headers: {
         'content-type': 'application/json',
       },
@@ -59,7 +58,7 @@ class App extends Component {
       });
   };
 
-  // TODO GTB-工程实践: - 命名不是很合适
+  // TODO GTB-工程实践: - 命名不是很合适(已修改该问题)
   addStudent = () => {
     this.setState({
       isAddStudent: true,
@@ -77,7 +76,7 @@ class App extends Component {
 
   // TODO GTB-知识点: * 这里可以省略studentName，也可以省略掉onChang，直接keyup的时候用event.target.value就好了(已经修改此处内容)
   httpAddStudent = (studentName) => {
-    const url = `http://localhost:8080/student?name=${studentName}`;
+    const url = `${POST_STUDENT_URL}?name=${studentName}`;
     fetch(url, {
       headers: {
         'content-type': 'application/json',

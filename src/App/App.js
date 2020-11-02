@@ -5,13 +5,15 @@ import Group from './group/group';
 import Student from './student/student';
 
 class App extends Component {
-  // TODO GTB-工程实践: - 建议安装插件解决eslint而不是注释
-  // eslint-disable-next-line react/state-in-constructor
-  state = {
-    students: [],
-    groups: [],
-    isAddStudent: false,
-  };
+  // TODO GTB-工程实践: - 建议安装插件解决eslint而不是注释(已修改该问题)
+  constructor(props) {
+    super(props);
+    this.state = {
+      students: [],
+      groups: [],
+      isAddStudent: false,
+    };
+  }
 
   componentDidMount = () => {
     this.showStudents();

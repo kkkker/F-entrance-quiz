@@ -3,6 +3,7 @@ import './App.scss';
 import Group from './group/group';
 
 import Student from './student/student';
+import AddStudent from './student/addStudent';
 import { GET_STUDENTS_URL, POST_STUDENT_URL, GET_GROUPS_URL } from './service/service';
 
 class App extends Component {
@@ -108,21 +109,11 @@ class App extends Component {
               return <Student key={student.id} student={student} />;
             })}
             {/* TODO GTB-知识点：- css 命名不太合理，添加学员这块建议可以提取一个单独的组件 */}
-            <div className="student">
-              {!this.state.isAddStudent ? (
-                <button className="add-student" onClick={this.addStudent} type="button">
-                  + 添加学员
-                </button>
-              ) : (
-                <input
-                  id="input-name"
-                  type="text"
-                  className="add-student-input"
-                  value={this.state.studentName}
-                  onKeyUp={this.handelKeyUp}
-                />
-              )}
-            </div>
+            <AddStudent
+              isAddStudent={this.state.isAddStudent}
+              addStudent={this.addStudent}
+              handelKeyUp={this.handelKeyUp}
+            />
           </div>
         </div>
       </div>

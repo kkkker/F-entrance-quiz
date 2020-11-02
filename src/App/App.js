@@ -90,13 +90,13 @@ class App extends Component {
     return (
       <div data-testid="app" className="App">
         <div className="list-item">
-          {/* TODO GTB-知识点： - 这里建议使用<header>标签 */}
-          <div className="group-title">
+          {/* TODO GTB-知识点： - 这里建议使用<header>标签 (修改为<header>标签) */}
+          <header className="group-title">
             <h2>分组列表</h2>
             <button onClick={this.handleGroupStudent} type="button">
               分组学员
             </button>
-          </div>
+          </header>
           {this.state.groups &&
             this.state.groups.map((group) => <Group key={group.id} group={group} />)}
         </div>

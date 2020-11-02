@@ -1,3 +1,16 @@
+.list-item {
+  width: 100%;
+}
+
+.students {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .student {
   width: 6%;
   min-width: 100px;
